@@ -3,8 +3,7 @@ var ajax = require('ajax');
 
 // Create a Card with title and subtitle
 var card = new UI.Card({
-  title:'AngelHack Timeline',
-  subtitle:'Fetching tweets...'
+  title:'AngelHack Timeline'
 });
 
 // Display the Card
@@ -19,15 +18,17 @@ setInterval(function(){
   ajax(
     {
       url: URL,
-      type: 'json'
+      type: 'json',
+      crossDomain: true,
+      headers: { 'Authorization': 'OAuth oauth_consumer_key="DC0sePOBbQ8bYdC8r4Smg",oauth_signature_method="HMAC-SHA1",oauth_timestamp="1429997754",oauth_nonce="2739203158",oauth_version="1.0",oauth_token="21090358-RquisURH9ffbUXhhbCGfuvEzNWqfy9DakiFiphWQN",oauth_signature="ZqdQRd20o8wFlmAqjiFOU33wzDQ%3D"'}
     },
     function(data) {
       // Success!
       console.log("Successfully fetched twitter timeline!");
-      console.log(data);
+      console.log(data.statuses[0].text);
   
       // Always upper-case first letter of description
-      var description = data.description;
+      var description = data.statuses[0].text;
       description = description.charAt(0).toUpperCase() + description.substring(1);
   
       // Show to user
