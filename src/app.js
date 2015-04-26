@@ -3,7 +3,7 @@ var ajax = require('ajax');
 
 // Create a Card with title and subtitle
 var card = new UI.Card({
-  title:'AngelHack Timeline'
+  title:'AngelHack Mentions'
 });
 
 // Construct URL
